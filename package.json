@@ -1,8 +1,10 @@
 {
   "name": "stockchart",
   "version": "0.1.0",
+  "homepage": "https://YugPatel10.github.io/stockchart",
   "private": true,
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "plotly.js": "^1.48.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -10,6 +12,8 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
