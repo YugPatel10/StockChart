@@ -6,20 +6,40 @@ class Stock extends React.Component {
     super(props);
     this.state = {
       stockChartXValues: [],
-      stockChartYValues: []
+      stockChartYValues: [],
+      inputStock: '',
     }
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
+
   }
 
-  componentDidMount() {
-    this.fetchStock();
+  handleOnClick(e){
+    e.preventDefault()
+    this.fetchStock()
   }
+
+  handleOnChange(e){
+    this.setState({inputStock: e.target.value})
+    console.log(e.target.value);
+  }
+
+   componentDidMount() {
+
+      setInterval(()=> {
+       console.log('Calling 5 seconds');
+     this.fetchStock();
+      }, 5000)
+    
+   }
 
   fetchStock() {
     const pointerToThis = this;
     console.log(pointerToThis);
-    const API_KEY = 'HGJWFG4N8AQ66ICD';
-    let StockSymbol = 'FB';
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
+    const API_KEY = 'YLBQGZ4Z2TRWI8LV';
+    // let StockSymbol = 'FB';
+    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.inputStock}&outputsize=compact&interval=5min&outputsize=full&apikey=${API_KEY}`
+  
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
 
@@ -33,9 +53,9 @@ class Stock extends React.Component {
         function(data) {
           console.log(data);
 
-          for (var key in data['Time Series (Daily)']) {
+          for (var key in data['Time Series (5min)']) {
             stockChartXValuesFunction.push(key);
-            stockChartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
+            stockChartYValuesFunction.push(data['Time Series (5min)'][key]['1. open']);
           }
 
           // console.log(stockChartXValuesFunction);
@@ -50,7 +70,16 @@ class Stock extends React.Component {
   render() {
     return (
       <div>
-        <h1>REAL TIME STOCK MARKET CHART</h1>
+        
+        {/* <input id = 'stock_val' type='text'>Search your stock</input> */}
+        <h1>REAL TIME STOCK PRICE CHART</h1>
+        <form  style= {{marginTop: 10}}>
+          <label>
+            Stock
+            <input onChange={this.handleOnChange} id = "stock" type="text" name="stock-name" value={this.state.inputStock}/>
+          </label>
+          <input onClick={this.handleOnClick} type="submit" value="Submit" />
+        </form>
         <Plot
           data={[
             {
@@ -61,7 +90,7 @@ class Stock extends React.Component {
               marker: {color: 'red'},
             }
           ]}
-          layout={{width: 720, height: 440, title: 'A Fancy Plot'}}
+          layout={{width: 1000, height: 640}}
         />
       </div>
     )
