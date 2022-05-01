@@ -1,13 +1,17 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
+let mountTimer, clickTimer;
+
 class Stock extends React.Component {
+  
   constructor(props) {
     super(props);
+    
     this.state = {
       stockChartXValues: [],
       stockChartYValues: [],
-      inputStock: '',
+      inputStock: 'AMZN',
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -16,7 +20,12 @@ class Stock extends React.Component {
 
   handleOnClick(e){
     e.preventDefault()
-    this.fetchStock()
+    clearInterval(mountTimer)
+    setInterval(()=> {
+      console.log('onClick Calling 5 seconds');
+        this.fetchStock();
+     }, 5000)
+   
   }
 
   handleOnChange(e){
@@ -25,15 +34,14 @@ class Stock extends React.Component {
   }
 
    componentDidMount() {
-
-      setInterval(()=> {
-       console.log('Calling 5 seconds');
-     this.fetchStock();
+     mountTimer = setInterval(()=> {
+       console.log('MOUNT Calling 5 seconds');
+         this.fetchStock();
       }, 5000)
-    
-   }
+     
+    }
 
-  fetchStock() {
+  async fetchStock() {
     const pointerToThis = this;
     console.log(pointerToThis);
     const API_KEY = 'YLBQGZ4Z2TRWI8LV';
@@ -43,7 +51,7 @@ class Stock extends React.Component {
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
 
-    fetch(API_Call)
+    await fetch(API_Call)
       .then(
         function(response) {
           return response.json();
@@ -79,6 +87,7 @@ class Stock extends React.Component {
             <input onChange={this.handleOnChange} id = "stock" type="text" name="stock-name" value={this.state.inputStock}/>
           </label>
           <input onClick={this.handleOnClick} type="submit" value="Submit" />
+          <h6> Sample Input are like AMZN, TSLA, FB, MSFT, and so on</h6>
         </form>
         <Plot
           data={[
