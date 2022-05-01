@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/stockchart/static/css/main.2cce8147.chunk.css",
-    "main.js": "/stockchart/static/js/main.6797ac42.chunk.js",
-    "main.js.map": "/stockchart/static/js/main.6797ac42.chunk.js.map",
-    "runtime~main.js": "/stockchart/static/js/runtime~main.d979cfe1.js",
-    "runtime~main.js.map": "/stockchart/static/js/runtime~main.d979cfe1.js.map",
-    "static/js/2.80bb184d.chunk.js": "/stockchart/static/js/2.80bb184d.chunk.js",
-    "static/js/2.80bb184d.chunk.js.map": "/stockchart/static/js/2.80bb184d.chunk.js.map",
-    "index.html": "/stockchart/index.html",
-    "precache-manifest.162e705f1252ed876820224505ea8c58.js": "/stockchart/precache-manifest.162e705f1252ed876820224505ea8c58.js",
-    "service-worker.js": "/stockchart/service-worker.js",
-    "static/css/main.2cce8147.chunk.css.map": "/stockchart/static/css/main.2cce8147.chunk.css.map"
+    "main.css": "/StockChart/static/css/main.2cce8147.chunk.css",
+    "main.js": "/StockChart/static/js/main.ee5fe0f5.chunk.js",
+    "main.js.map": "/StockChart/static/js/main.ee5fe0f5.chunk.js.map",
+    "runtime~main.js": "/StockChart/static/js/runtime~main.b6b381f4.js",
+    "runtime~main.js.map": "/StockChart/static/js/runtime~main.b6b381f4.js.map",
+    "static/js/2.80bb184d.chunk.js": "/StockChart/static/js/2.80bb184d.chunk.js",
+    "static/js/2.80bb184d.chunk.js.map": "/StockChart/static/js/2.80bb184d.chunk.js.map",
+    "index.html": "/StockChart/index.html",
+    "precache-manifest.a1e1175b82ae8c8fe9e8979a9664baa5.js": "/StockChart/precache-manifest.a1e1175b82ae8c8fe9e8979a9664baa5.js",
+    "service-worker.js": "/StockChart/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/StockChart/static/css/main.2cce8147.chunk.css.map"
   }
 }
